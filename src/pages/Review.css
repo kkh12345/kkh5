@@ -1,0 +1,36 @@
+.review-grid-container {
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(20%, 1fr));
+  grid-template-rows: auto;
+  gap: 20px;
+}
+.review-select-view-method {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 40px;
+}
+.review-select-view-method > div {
+  border: 1px solid #ddd;
+  width: 50px;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 0.6875rem;
+  cursor: pointer;
+}
+.review-select-view-method img {
+  width: 20px;
+  margin: 0 auto 10px;
+}
+.review-grid-container .review-card {
+  text-align: center;
+  height: 100%;
+}
+
+.review-grid-container .review-card .review-card-star img {
+  margin: 0 auto 20px;
+}
+.review-table-wrap {
+  margin-top: 50px;
+}

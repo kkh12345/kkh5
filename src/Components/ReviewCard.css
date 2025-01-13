@@ -1,0 +1,33 @@
+.review-card {
+  border: 1px solid #eee;
+}
+
+.review-card .review-img-wrap {
+  height: 200px;
+  overflow: hidden;
+}
+
+.review-card .review-img-wrap>a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+}
+
+
+
+.review-card .review-img-wrap img {
+  height: 100%;
+  width: 100%;
+  transition: transform 0.5s;
+}
+
+.review-card .review-img-wrap:hover img {
+  transform: scale(1.1);
+}
+
+.review-card .review-card-star img {
+  width: auto;
+}

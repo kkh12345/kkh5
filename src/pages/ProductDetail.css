@@ -1,0 +1,111 @@
+.product-detail-tap {
+  margin-top: 100px;
+}
+.product-detail-tap .menu {
+  display: flex;
+  gap: 8px;
+}
+.product-detail-tap .menu > li {
+  flex: 1;
+  text-align: center;
+  padding: 15px 0;
+  background-color: #f8f8f8;
+  border: 1px solid #eee;
+  color: #999999;
+  position: relative;
+  cursor: pointer;
+}
+.product-detail-tap .menu > li.selected {
+  color: #000;
+}
+.product-detail-tap .menu > li.selected::after {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: red;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.product-detail-tap-content {
+  padding-top: 50px;
+}
+.product-detail-tap-content .tap-content1 {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, auto);
+  color: #555555;
+  font-size: 0.8125rem;
+}
+.product-detail-tap-content .tap-content1 h4 {
+  font-weight: 400;
+  margin-bottom: 30px;
+  font-size: 1rem;
+}
+
+.product-detail-tap-content .tap-content1 li {
+  padding: 30px 20px;
+}
+.product-detail-tap-content .tap-content1 li:not(:last-child, :nth-child(3)) {
+  border-bottom: 1px solid #ddd;
+}
+.product-detail-tap-content .tap-content1 li:last-child {
+  grid-column: 2/3;
+  grid-row: 1/4;
+  border-left: 1px solid #ddd;
+}
+.product-detail-tap-content .tap-content1 li:last-child h5 {
+  margin-top: 30px;
+  font-size: 0.8125rem;
+}
+.product-detail-tap-content .tap-content1 p:not(:last-of-type) {
+  margin-bottom: 10px;
+}
+.product-detail-tap-content .tap-content1 li:nth-child(1) p:nth-of-type(1) {
+  margin-bottom: 50px;
+}
+.product-detail-tap-content table {
+  width: 100%;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+.product-detail-tap-content table th {
+  border-bottom: 1px solid #eee;
+  color: #333333;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+.product-detail-tap-content table th,
+.product-detail-tap-content table td {
+  padding: 20px 10px;
+  color: #333333;
+}
+.product-detail-tap-content table th:not(:nth-child(3)),
+.product-detail-tap-content table td:not(:nth-child(3)) {
+  text-align: center;
+}
+.product-detail-tap-content table td {
+  font-size: 0.875rem;
+}
+.product-detail-tap-content table td:nth-child(3) {
+  font-weight: 500;
+  color: #000;
+}
+.product-detail-tap-content table td:nth-child(n + 5) {
+  font-size: 0.6875rem;
+}
+.tapContent05Swiper .swiper-pagination {
+  position: static;
+}
+.tapContent05Swiper .swiper-pagination-bullet {
+  width: 20px;
+  height: 5px;
+  border-radius: 0;
+}
+.tapContent05Swiper .swiper-pagination-bullet-active {
+  background-color: #000;
+}

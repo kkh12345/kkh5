@@ -1,0 +1,178 @@
+footer {
+
+  margin-top: 100px;
+  padding: 2.5rem 0;
+  background-color: #000;
+  color: #ffffff80;
+  font-size: 13px;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-inner {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer01 {
+  max-width: 60%;
+}
+
+.footer-logo-wrap img,
+.footer01 .copyright img {
+  width: auto;
+}
+
+.footer01 a {
+  color: #fff;
+  margin-left: 0.2rem;
+  transition: all 0.5s;
+}
+
+.footer01 a:hover {
+  color: #ffffff80;
+}
+
+.footer01 .text01 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.footer01 .text01 span:not(:last-child) {
+  display: inline-block;
+  margin-bottom: 0.3rem;
+}
+
+.footer01 .footer-icon-wrap {
+  display: flex;
+  align-items: center;
+  margin-top: 0.3rem;
+}
+
+.footer01 .footer-icon-wrap>img {
+  max-width: 26px;
+}
+
+.footer02 span {
+  display: block;
+}
+
+.footer02 .call>span:not(:last-child),
+.footer02 .account>span:not(:last-child) {
+  margin-bottom: 0.3rem;
+}
+
+.footer02 .call {
+  margin-bottom: 1.2rem;
+}
+
+.footer02 .call>span:nth-child(1),
+.footer02 .call>span:nth-child(2),
+.footer02 .account>span:nth-child(1) {
+  color: #fff;
+}
+
+.footer02 .call>span:nth-child(2) {
+  font-size: 1.25rem;
+}
+
+.footer03 {
+  position: relative;
+}
+
+.footer03 a {
+  color: #fff;
+}
+
+.footer03 ul>li:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.footer03 .sns-icon-wrap {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.footer03 .sns-icon-wrap i {
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .home-inner {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  footer {
+    padding: 1.5rem 0;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .footer01 {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .footer01 .text01 {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer01 .text02 {
+    display: none;
+  }
+
+  .footer02 {
+    order: -1;
+    border-bottom: 1px solid #ffffff80;
+    padding-bottom: 1.5rem;
+  }
+
+  .footer02>ul {
+    display: flex;
+  }
+
+  .footer02>ul>li {
+    width: 50%;
+  }
+
+  .footer02 .call {
+    margin-bottom: 0;
+  }
+
+  .footer-logo-wrap {
+    display: none;
+  }
+
+  .footer03>ul {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .footer03 .sns-icon-wrap {
+    display: none;
+  }
+
+  .footer03 ul>li:not(:last-child) {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  footer {
+    margin-top: 80px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  footer {
+    margin-top: 60px;
+  }
+}

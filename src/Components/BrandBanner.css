@@ -1,0 +1,46 @@
+.brand-banner {
+  margin-top: 80px;
+}
+
+.brand-banner-swiper {
+  max-height: 500px;
+}
+.brand-banner-swiper .swiper-button-next::after,
+.brand-banner-swiper .swiper-button-prev::after {
+  font-size: 2.5rem;
+  color: #000;
+}
+.brand-banner-swiper .swiper-pagination {
+  bottom: 10px !important;
+  top: auto !important;
+}
+
+.brand-banner-swiper .slide-desc:nth-of-type(2) {
+  margin-bottom: 0.3rem;
+}
+
+.brand-banner-swiper .swiper-pagination-bullet {
+  border-radius: 30px;
+  width: 50px;
+  height: 3px;
+  background-color: #ccc;
+}
+
+.brand-banner-swiper .swiper-pagination-bullet-active {
+  width: 60px;
+  background: #000;
+}
+@media screen and (max-width: 768px) {
+  .brand-banner-swiper .swiper-button-next::after,
+  .brand-banner-swiper .swiper-button-prev::after {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .brand-banner-swiper .swiper-button-next::after,
+  .brand-banner-swiper .swiper-button-prev::after {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+}

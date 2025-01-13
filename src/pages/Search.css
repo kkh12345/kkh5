@@ -1,0 +1,74 @@
+.search .search-container {
+  max-width: 400px;
+  margin: 80px auto 0;
+}
+
+.search-container .search-input-wrap {
+  display: flex;
+  position: relative;
+  width: 50%;
+  min-width: 300px;
+  margin: 0 auto;
+  border: 1px solid #000;
+}
+
+.search-container .search-input-wrap>input {
+  flex-grow: 1;
+  padding: 0 0.5rem;
+  font-size: 0.6875rem;
+  outline: none;
+  border: none;
+}
+
+.search-container .search-icon-wrap {
+  width: 32px;
+  aspect-ratio: 1/1;
+  border-left: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.search-container .search-icon-wrap>.xi-search {
+  font-size: 1.25rem;
+  color: #999999;
+}
+
+.search-container .popular-kewords {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.6875rem;
+  color: #525252;
+}
+
+.search-container .popular-kewords>li {
+  cursor: pointer;
+}
+
+.search-container .popular-kewords::before {
+  content: '인기검색어';
+  border: 1px solid #ccc;
+  padding: 2px 10px;
+  border-radius: 30px;
+}
+
+
+
+@media screen and (max-width: 480px) {
+  .search .search-container {
+    margin: 30px auto 0;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .search-container .search-input-wrap {
+    width: 100%;
+    min-width: 0;
+  }
+
+
+}

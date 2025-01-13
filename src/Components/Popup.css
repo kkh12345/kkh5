@@ -1,0 +1,36 @@
+.popup {
+  background-color: #000;
+  color: #fff;
+
+  font-size: 0.875rem;
+  font-weight: 300;
+  overflow: hidden;
+}
+
+.popup-inner {
+  position: relative;
+  height: 45px;
+}
+
+
+
+.popup-text-box>li {
+
+  text-align: center;
+}
+
+.popup-close-button {
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+@media screen and (max-width : 768px) {
+
+  .popup {
+    font-size: 0.8125rem;
+  }
+}

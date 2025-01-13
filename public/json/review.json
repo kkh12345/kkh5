@@ -1,0 +1,74 @@
+[
+  {
+    "productId": 6,
+    "reviewTitle": "상품 사용후기 메인연동 기능입니다. 최신글, 썸네일이 불러와지는 형식입니다.",
+    "author": "MOANY",
+    "date": " 2023-02-21 09:43:21",
+    "star": 5,
+    "content": "상품 사용후기 메인연동 기능입니다. 최신글, 썸네일이 불러와지는 형식입니다.",
+    "viewCount": 13
+  },
+  {
+    "productId": 1,
+    "reviewTitle": "상품 사용후기 게시판입니다.",
+    "author": "MOANY1",
+    "date": "2023-02-21 09:43:09",
+    "star": 5,
+    "content": "상품 사용후기 게시판입니다.",
+    "viewCount": 21
+  },
+  {
+    "productId": null,
+    "reviewTitle": "상품 선택없이 후기 작성시 메인화면 리뷰 영역에 로고가 보여집니다.",
+    "author": "MOANY2",
+    "date": "2023-02-21 09:42:59",
+    "star": 5,
+    "content": "상품 선택없이 후기 작성시 메인화면 리뷰 영역에 로고가 보여집니다.",
+    "viewCount": 18
+  },
+  {
+    "productId": 2,
+    "reviewTitle": "상품 사용후기 게시판입니다. 사용후기 글을 남겨주세요.",
+    "author": "MOANY3",
+    "date": "2023-02-21 09:42:46",
+    "star": 5,
+    "content": "상품 사용후기 게시판입니다. 사용후기 글을 남겨주세요.",
+    "viewCount": 11
+  },
+  {
+    "productId": 3,
+    "reviewTitle": "상품후기는 최신글, 상품이미지가 메인에 연동되는 기능입니다.",
+    "author": "MOANY4",
+    "date": "2023-02-21 09:42:31",
+    "star": 5,
+    "content": "상품후기는 최신글, 상품이미지가 메인에 연동되는 기능입니다.",
+    "viewCount": 12
+  },
+  {
+    "productId": 4,
+    "reviewTitle": "상품 사용후기 메인연동 기능입니다. 최신글, 썸네일이 불러와지는 형식입니다.",
+    "author": "MOANY5",
+    "date": "2023-02-21 09:41:47",
+    "star": 4,
+    "content": "상품 사용후기 메인연동 기능입니다. 최신글, 썸네일이 불러와지는 형식입니다.",
+    "viewCount": 20
+  },
+  {
+    "productId": 10,
+    "reviewTitle": "상품 사용후기 게시판입니다. 사용후기 글을 남겨주세요.",
+    "author": "MOANY6",
+    "date": "2023-02-21 09:41:15",
+    "star": 5,
+    "content": "상품 사용후기 게시판입니다. 사용후기 글을 남겨주세요.",
+    "viewCount": 17
+  },
+  {
+    "productId": 12,
+    "reviewTitle": "상품후기는 최신글, 상품이미지가 메인에 연동되는 기능입니다.",
+    "author": "MOANY7",
+    "date": " 2023-02-21 09:40:59",
+    "star": 5,
+    "content": "상품후기는 최신글, 상품이미지가 메인에 연동되는 기능입니다.",
+    "viewCount": 10
+  }
+]

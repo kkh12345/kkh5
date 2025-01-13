@@ -1,0 +1,39 @@
+.instagram {
+  margin-top: 100px;
+}
+.instagram-grid-box {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+.instagram-grid-box > li {
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+.instagram-grid-box a::after {
+  content: '';
+  transition: all 0.5s;
+}
+.instagram-grid-box a:hover::after {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff4f;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+@media screen and (max-width: 768px) {
+  .instagram {
+    margin-top: 60px;
+  }
+  .instagram-grid-box {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (max-width: 480px) {
+  .instagram-grid-box {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

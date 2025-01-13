@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&display=swap');
+
+html,
+body {
+  font-family: 'Montserrat', 'Noto Sans KR';
+  font-optical-sizing: auto;
+  font-style: normal;
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+  color: var(--font-222222);
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+:root {
+  --font-222222: #222222;
+}
+
+.home-inner {
+  max-width: 1280px;
+  width: 92%;
+  margin: 0 auto;
+}
+
+.common-main-section {
+  margin-top: 100px;
+}
+
+.App {
+  min-width: 300px;
+}
+
+.appear-up {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  transition: all 1s;
+}
+
+.appear-down {
+  transform: translateY(130px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 1s;
+  transition-delay: 0.2s;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .home-inner {
+    max-width: 90%;
+  }
+
+  .common-main-section {
+    margin-top: 80px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+
+  .common-main-section {
+    margin-top: 60px;
+  }
+}
