@@ -1,15 +1,15 @@
-import { SectionTitle } from '../StyledComponent';
-import ProductsCard from './ProductsCard';
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { CommonSectionGridBox, ViewMoreCardButton } from '../StyledComponent';
-import { useMediaQuery } from 'react-responsive';
+import { SectionTitle } from "../StyledComponent";
+import ProductsCard from "./ProductsCard";
+import { useEffect, useState } from "react";
+import { CommonSectionGridBox, ViewMoreCardButton } from "../StyledComponent";
+import { useMediaQuery } from "react-responsive";
 
 const CommonMainSection = ({ products, title }) => {
-  const isMobile = useMediaQuery({ query: '(max-width : 480px)' });
+  const isMobile = useMediaQuery({ query: "(max-width : 480px)" });
   const [contentArr, setContentArr] = useState(null);
   const [cardTextHover, setCardTextHover] = useState(true);
   const [gridGap, setGridGap] = useState(null);
-  const gridBoxRef = useRef(null);
+
   const [viewMore, setViewMore] = useState(false);
 
   useEffect(() => {
@@ -17,17 +17,17 @@ const CommonMainSection = ({ products, title }) => {
       let filter = products.filter((product) => {
         return product.new === true;
       });
-      if (title === 'NEW IN') {
+      if (title === "NEW IN") {
         filter = filter.slice(0, 6);
         setContentArr(filter);
         setCardTextHover(true);
         setGridGap(10);
-      } else if (title === 'INTERIOR') {
+      } else if (title === "INTERIOR") {
         filter = filter.slice(0, 8);
         setContentArr(filter);
         setCardTextHover(false);
         setGridGap(14);
-      } else if (title === 'FUNITURE') {
+      } else if (title === "FUNITURE") {
         filter = filter.slice(0, 8);
         setContentArr(filter);
         setCardTextHover(false);
@@ -57,16 +57,16 @@ const CommonMainSection = ({ products, title }) => {
                     style={{
                       display: isMobile
                         ? viewMore
-                          ? 'flex'
+                          ? "flex"
                           : index > 3
-                          ? 'none'
-                          : 'flex'
-                        : 'flex',
+                          ? "none"
+                          : "flex"
+                        : "flex",
                     }}
                     key={index}
                   >
                     <ProductsCard
-                      hasCardIcons={title === 'INTERIOR' ? true : false}
+                      hasCardIcons={title === "INTERIOR" ? true : false}
                       hasDiscountRate={true}
                       cardTextHover={cardTextHover}
                       product={product}
@@ -84,7 +84,7 @@ const CommonMainSection = ({ products, title }) => {
           className="view-more-button appear-down"
           deg={viewMore ? 135 : -45}
         >
-          <span>{viewMore ? '접기' : '더보기'}</span>
+          <span>{viewMore ? "접기" : "더보기"}</span>
           <span></span>
         </ViewMoreCardButton>
       </div>
