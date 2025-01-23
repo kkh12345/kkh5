@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { useNavigate } from "react-router";
-import "./SideMenu.css";
+import { useState } from 'react';
+import { useNavigate } from 'react-router';
+import './SideMenu.css';
 
 const SideMenu = ({ setSideMenuShow, sideMenuShow, setLogin, login }) => {
   const navigate = useNavigate();
@@ -8,7 +8,7 @@ const SideMenu = ({ setSideMenuShow, sideMenuShow, setLogin, login }) => {
   const [sub2State, setSub2State] = useState([false, false, false]);
 
   return (
-    <div className={`side-menu ${sideMenuShow ? "show" : null}`}>
+    <div className={`side-menu ${sideMenuShow ? 'show' : null}`}>
       <div className="side-menu-inner">
         <div className="side-button-wrap">
           {login ? (
@@ -16,10 +16,10 @@ const SideMenu = ({ setSideMenuShow, sideMenuShow, setLogin, login }) => {
               href="#none"
               onClick={(e) => {
                 e.preventDefault();
-                alert("로그아웃 하셨습니다.");
+                alert('로그아웃 하셨습니다.');
                 setSideMenuShow(false);
                 setLogin(false);
-                localStorage.setItem("login", false);
+                localStorage.setItem('login', false);
               }}
             >
               로그아웃
@@ -50,13 +50,13 @@ const SideMenu = ({ setSideMenuShow, sideMenuShow, setLogin, login }) => {
                   className="side-arrow-img"
                   src={
                     sub1State[0]
-                      ? "/img/home/up-arrow.gif"
-                      : "/img/home/down-arrow.gif"
+                      ? '/img/home/up-arrow.gif'
+                      : '/img/home/down-arrow.gif'
                   }
                   alt="서브메뉴1"
                 />
               </a>
-              <ul className={`sub1 ${sub1State[0] ? "show" : null}`}>
+              <ul className={`sub1 ${sub1State[0] ? 'show' : null}`}>
                 <li>
                   <a
                     onClick={(e) => {
@@ -74,7 +74,7 @@ const SideMenu = ({ setSideMenuShow, sideMenuShow, setLogin, login }) => {
                     }}
                     href="#none"
                   >
-                    <span style={{ fontWeight: sub2State[0] ? "500" : "" }}>
+                    <span style={{ fontWeight: sub2State[0] ? '500' : '' }}>
                       옷장&수납장
                     </span>
                     <span>
@@ -83,14 +83,14 @@ const SideMenu = ({ setSideMenuShow, sideMenuShow, setLogin, login }) => {
                         className="side-arrow-img"
                         src={
                           sub2State[0]
-                            ? "/img/home/up-arrow.gif"
-                            : "/img/home/down-arrow.gif"
+                            ? '/img/home/up-arrow.gif'
+                            : '/img/home/down-arrow.gif'
                         }
                         alt="서브메뉴1"
                       />
                     </span>
                   </a>
-                  <ul className={`sub2 ${sub2State[0] ? "show" : null}`}>
+                  <ul className={`sub2 ${sub2State[0] ? 'show' : null}`}>
                     <li>
                       <a href="/shop/옷장">옷장</a>
                     </li>
@@ -119,7 +119,7 @@ const SideMenu = ({ setSideMenuShow, sideMenuShow, setLogin, login }) => {
                     }}
                     href="#none"
                   >
-                    <span style={{ fontWeight: sub2State[1] ? "500" : "" }}>
+                    <span style={{ fontWeight: sub2State[1] ? '500' : '' }}>
                       거실가구
                     </span>
                     <span>
@@ -128,14 +128,14 @@ const SideMenu = ({ setSideMenuShow, sideMenuShow, setLogin, login }) => {
                         className="side-arrow-img"
                         src={
                           sub2State[1]
-                            ? "/img/home/up-arrow.gif"
-                            : "/img/home/down-arrow.gif"
+                            ? '/img/home/up-arrow.gif'
+                            : '/img/home/down-arrow.gif'
                         }
                         alt="서브메뉴1"
                       />
                     </span>
                   </a>
-                  <ul className={`sub2 ${sub2State[1] ? "show" : null}`}>
+                  <ul className={`sub2 ${sub2State[1] ? 'show' : null}`}>
                     <li>
                       <a href="/shop/거실테이블">거실테이블</a>
                     </li>
@@ -172,7 +172,7 @@ const SideMenu = ({ setSideMenuShow, sideMenuShow, setLogin, login }) => {
                     }}
                     href="/shop/홈인테리어"
                   >
-                    <span style={{ fontWeight: sub2State[2] ? "500" : "" }}>
+                    <span style={{ fontWeight: sub2State[2] ? '500' : '' }}>
                       홈인테리어
                     </span>
                     <span>
@@ -181,14 +181,14 @@ const SideMenu = ({ setSideMenuShow, sideMenuShow, setLogin, login }) => {
                         className="side-arrow-img"
                         src={
                           sub2State[2]
-                            ? "/img/home/up-arrow.gif"
-                            : "/img/home/down-arrow.gif"
+                            ? '/img/home/up-arrow.gif'
+                            : '/img/home/down-arrow.gif'
                         }
                         alt="서브메뉴1"
                       />
                     </span>
                   </a>
-                  <ul className={`sub2 ${sub2State[2] ? "show" : null}`}>
+                  <ul className={`sub2 ${sub2State[2] ? 'show' : null}`}>
                     <li>
                       <a href="/shop/거울">거울</a>
                     </li>
@@ -217,13 +217,13 @@ const SideMenu = ({ setSideMenuShow, sideMenuShow, setLogin, login }) => {
                   className="side-arrow-img"
                   src={
                     sub2State[1]
-                      ? "/img/home/up-arrow.gif"
-                      : "/img/home/down-arrow.gif"
+                      ? '/img/home/up-arrow.gif'
+                      : '/img/home/down-arrow.gif'
                   }
                   alt="서브메뉴1"
                 />
               </a>
-              <ul className={`sub1 ${sub1State[1] ? "show" : null}`}>
+              <ul className={`sub1 ${sub1State[1] ? 'show' : null}`}>
                 <li>
                   <a href="/notice">공지사항</a>
                 </li>

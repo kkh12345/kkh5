@@ -4,14 +4,7 @@ import Media from "react-responsive";
 import Popup from "./Popup";
 import { SideMenu, OverLay } from "./SideMenu";
 import { useNavigate } from "react-router";
-const Header = ({
-  login,
-  setLogin,
-  searchValue,
-  setSearchValue,
-  searchContent,
-  setSearchContent,
-}) => {
+const Header = ({ login, setLogin, cartItems, setSearchValue, cartCount }) => {
   const navigate = useNavigate();
 
   const [sub1Show, setSub1Show] = useState([false, false, false]);
@@ -22,6 +15,7 @@ const Header = ({
   const [headerFixed, setHeaderFixed] = useState(false);
   const headerRef = useRef(null);
   const popupRef = useRef(null);
+
   useEffect(() => {
     window.addEventListener("scroll", function () {
       if (headerRef.current !== null) {
@@ -341,8 +335,9 @@ const Header = ({
                   </li>
                 </ul>
               </li>
-              <li>
-                <a href="#none">
+              <li className="cart-icon">
+                <a href="/cart">
+                  <span className="cart-count">{cartCount}</span>
                   <img src="/img/home/cart.png" alt="장바구니페이지" />
                 </a>
               </li>
@@ -375,10 +370,9 @@ const Header = ({
 const SearchArea = ({
   searchShow,
   setSearchShow,
-  searchValue,
+
   setSearchValue,
-  setSearchContent,
-  searchContent,
+
   navigate,
 }) => {
   return (

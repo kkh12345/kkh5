@@ -1,24 +1,51 @@
-import { act, useEffect, useRef, useState, useLayoutEffect, use } from 'react';
-import './ProductInfo.css';
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router";
+import "./ProductInfo.css";
 
-import React from 'react';
-import { Fragment } from 'react';
+import React from "react";
+import { Fragment } from "react";
 
-const ProductInfo = ({ id }) => {
+const ProductInfo = ({ id, setCartItems, cartItems }) => {
   const zoomBoxRef = useRef(null);
   const bigImageRef = useRef(null);
   const [imgWrapMouseIn, setImgWrapMouseIn] = useState(false);
   const [currentProduct, setCurrentProduct] = useState(null);
   const [like, setLike] = useState(false);
+  const [selectedOption, setSelectedOption] = useState([]);
+  const [priceSum, setPriceSum] = useState(0);
+  const [countSum, setCountSum] = useState(0);
+  const navigate = useNavigate();
 
-  let get = JSON.parse(localStorage.getItem('products'));
+  const radioRef = useRef({
+    color: [],
+    size: [],
+  });
 
+  let get = JSON.parse(localStorage.getItem("products"));
+  useEffect(() => {
+    if (selectedOption.length > 0 && currentProduct !== null) {
+      let priceSum = 0;
+      selectedOption.forEach((a) => {
+        priceSum += currentProduct.discountedPrice * a.count;
+      });
+      setPriceSum(priceSum);
+    }
+
+    if (selectedOption.length > 0 && currentProduct !== null) {
+      let countSum = 0;
+      selectedOption.forEach((a) => {
+        countSum += parseInt(a.count);
+      });
+
+      setCountSum(countSum);
+    }
+  }, [selectedOption]);
   useEffect(() => {
     if (get !== null) {
       let findIndex = get.findIndex((a) => {
         return a.productId === parseInt(id);
       });
-      localStorage.setItem('products', JSON.stringify(get));
+      localStorage.setItem("products", JSON.stringify(get));
       setCurrentProduct(get[findIndex]);
       setLike(get[findIndex].isInterested);
     }
@@ -29,7 +56,7 @@ const ProductInfo = ({ id }) => {
         return a.productId === parseInt(id);
       });
       get[findIndex].isInterested = like;
-      localStorage.setItem('products', JSON.stringify(get));
+      localStorage.setItem("products", JSON.stringify(get));
     }
   }, [like]);
   return (
@@ -78,7 +105,7 @@ const ProductInfo = ({ id }) => {
         >
           <div
             style={{
-              display: imgWrapMouseIn ? 'block' : 'none',
+              display: imgWrapMouseIn ? "block" : "none",
             }}
             className="zoom-box"
             ref={zoomBoxRef}
@@ -90,6 +117,9 @@ const ProductInfo = ({ id }) => {
           />
 
           <img
+            style={{
+              display: imgWrapMouseIn ? "none" : "block",
+            }}
             className="let-mouse-hover"
             src="/img/home/let-mousehover.gif"
             alt="마우스를 올려보세요"
@@ -98,7 +128,7 @@ const ProductInfo = ({ id }) => {
             className="big-img-wrap"
             ref={bigImageRef}
             style={{
-              display: imgWrapMouseIn ? 'block' : 'none',
+              display: imgWrapMouseIn ? "block" : "none",
             }}
           >
             <img
@@ -111,7 +141,7 @@ const ProductInfo = ({ id }) => {
         <div className="interest-icon-wrap">
           <button
             style={{
-              color: like ? 'red' : '#555555',
+              color: like ? "red" : "#555555",
             }}
             onClick={() => {
               setLike(!like);
@@ -120,8 +150,8 @@ const ProductInfo = ({ id }) => {
             <img
               src={
                 like
-                  ? '/img/home/interest-icon-black.png'
-                  : '/img/home/interest-icon-white.png'
+                  ? "/img/home/interest-icon-black.png"
+                  : "/img/home/interest-icon-white.png"
               }
               alt="좋아요"
             />
@@ -191,6 +221,9 @@ const ProductInfo = ({ id }) => {
         {currentProduct !== null && currentProduct.size.length > 0 ? (
           <div className="product-size-wrap">
             <ProductSizeBox
+              selectedOption={selectedOption}
+              setSelectedOption={setSelectedOption}
+              radioRef={radioRef}
               currentProduct={currentProduct !== null ? currentProduct : null}
               product="currentProduct"
             ></ProductSizeBox>
@@ -199,6 +232,9 @@ const ProductInfo = ({ id }) => {
         {currentProduct !== null && currentProduct.color.length > 0 ? (
           <div className="product-color-wrap">
             <ProductColorBox
+              selectedOption={selectedOption}
+              setSelectedOption={setSelectedOption}
+              radioRef={radioRef}
               product="currentProduct"
               currentProduct={currentProduct !== null ? currentProduct : null}
             ></ProductColorBox>
@@ -207,6 +243,7 @@ const ProductInfo = ({ id }) => {
 
         <span className="minimum-order">(최소주문수량 1개 이상)</span>
         <AdditionalProducts
+          radioRef={radioRef}
           get={get}
           currentProduct={currentProduct !== null ? currentProduct : null}
         ></AdditionalProducts>
@@ -215,10 +252,60 @@ const ProductInfo = ({ id }) => {
             <img src="/img/home/result-box-warn.gif" alt="느낌표" />
             <span>위 옵션선택 박스를 선택하시면 아래에 상품이 추가됩니다.</span>
           </div>
+          <ul className="result-box-products">
+            {selectedOption.length > 0
+              ? selectedOption.map((a, index) => {
+                  return (
+                    <li key={index}>
+                      <div className="left">
+                        <span>{currentProduct.name}</span>
+                        <span>
+                          -{a.size}/{a.color}
+                        </span>
+                      </div>
+                      <div className="center">
+                        <input
+                          type="number"
+                          value={a.count}
+                          onChange={(e) => {
+                            if (e.target.value < 0) {
+                              e.target.value = 0;
+                            }
+                            if (selectedOption.length > 0) {
+                              let copy = [...selectedOption];
+
+                              selectedOption[index].count = parseInt(
+                                e.target.value
+                              );
+
+                              setSelectedOption(copy);
+                            }
+
+                            if (parseInt(e.target.value) === 0) {
+                              let copy = [...selectedOption];
+                              setSelectedOption(copy);
+                            }
+                          }}
+                        />{" "}
+                        <span className="delete"></span>
+                      </div>
+                      <div className="right">
+                        <span>
+                          {(
+                            currentProduct.discountedPrice * a.count
+                          ).toLocaleString()}
+                          원
+                        </span>
+                      </div>
+                    </li>
+                  );
+                })
+              : null}
+          </ul>
           <div className="result-box-sum">
             <span>총 상품금액</span>
             <span>(수량) : </span>
-            <span>0</span> <span>(0개)</span>
+            <span>{priceSum.toLocaleString()}</span> <span>({countSum}개)</span>
           </div>
         </div>
         <div className="buy-button-wrap">
@@ -226,7 +313,94 @@ const ProductInfo = ({ id }) => {
             <button>바로 구매하기</button>
           </div>
           <div className="cart-button-wrap">
-            <button onClick={() => {}}>장바구니 담기</button>
+            <button
+              onClick={() => {
+                let getCart = JSON.parse(localStorage.getItem("cart"));
+                let requirementChecked = true;
+                let NoOptionsObj = {
+                  count: 1,
+                  cartId: "NoOptions",
+                  id: parseInt(id),
+                };
+                if (
+                  radioRef.current.size.length === 0 &&
+                  radioRef.current.color.length === 0
+                ) {
+                  if (
+                    window.confirm(
+                      "장바구니에 상품을 담으시겠습니까? (중복된 상품이 있으면 수량만 증가함)"
+                    )
+                  ) {
+                    if (getCart.length === 0) {
+                      getCart.push(NoOptionsObj);
+                    } else {
+                      let findIndex = getCart.findIndex((a) => {
+                        return a.cartId === NoOptionsObj.cartId;
+                      });
+
+                      if (findIndex === -1) {
+                        getCart.push(NoOptionsObj);
+                      } else {
+                        getCart[findIndex].count += 1;
+                      }
+                    }
+                  }
+                } else {
+                  for (let key in radioRef.current) {
+                    if (radioRef.current[key].length !== 0) {
+                      let everyFalse = radioRef.current[key].every((a) => {
+                        return a.checked === false;
+                      });
+                      if (everyFalse) {
+                        requirementChecked = false;
+                      }
+                    }
+                  }
+
+                  if (requirementChecked) {
+                    if (
+                      window.confirm(
+                        "장바구니에 상품을 담으시겠습니까? (중복된 상품이 있으면 수량만 증가함)"
+                      )
+                    ) {
+                      if (getCart.length === 0) {
+                        selectedOption.forEach((a) => {
+                          getCart.push(a);
+                        });
+                        localStorage.setItem("cart", JSON.stringify(getCart));
+                        setCartItems(getCart);
+                      } else {
+                        selectedOption.forEach((a) => {
+                          let findIndex = getCart.findIndex((b) => {
+                            return a.cartId == b.cartId;
+                          });
+
+                          if (findIndex === -1) {
+                            getCart.push(a);
+                          } else {
+                            getCart[findIndex].count += 1;
+                          }
+                        });
+                      }
+                    }
+                  } else {
+                    alert("필수 옵션을 선택해주세요");
+                  }
+                  for (let key in radioRef.current) {
+                    radioRef.current[key].forEach((a) => {
+                      a.checked = false;
+                    });
+                  }
+                }
+                localStorage.setItem("cart", JSON.stringify(getCart));
+                setCartItems(getCart);
+                setSelectedOption([]);
+                setPriceSum(0);
+                setCountSum(0);
+              }}
+            >
+              장바구니 담기
+            </button>
             <button>관심상품등록</button>
           </div>
         </div>
@@ -235,9 +409,14 @@ const ProductInfo = ({ id }) => {
   );
 };
 
-const ProductSizeBox = ({ product, currentProduct }) => {
+const ProductSizeBox = ({ product, currentProduct, radioRef }) => {
   const [selectedSize, setSelectedSize] = useState(null);
-
+  const [checkbox, setCheckBox] = useState(null);
+  useEffect(() => {
+    if (currentProduct !== null) {
+      setCheckBox(currentProduct.size.map((a) => false));
+    }
+  }, [currentProduct]);
   return (
     <div className="product-size-box">
       <div className="product-size-box-left">사이즈</div>
@@ -248,10 +427,21 @@ const ProductSizeBox = ({ product, currentProduct }) => {
                 return (
                   <React.Fragment key={i}>
                     <input
+                      ref={(el) => {
+                        if (product === "currentProduct") {
+                          radioRef.current.size[i] = el;
+                        }
+                      }}
                       onChange={(e) => {
                         setSelectedSize(a);
+                        for (let key in radioRef.current) {
+                          radioRef.current[key].forEach(
+                            (a) => (a.checked = false)
+                          );
+                        }
+                        e.target.checked = true;
                       }}
-                      type="checkbox"
+                      type="radio"
                       name={`size${currentProduct.productId}`}
                       id={`${a}${currentProduct.productId}`}
                       value={a}
@@ -265,13 +455,19 @@ const ProductSizeBox = ({ product, currentProduct }) => {
             : null}
         </div>
         <span>
-          [필수] {selectedSize !== null ? selectedSize : '옵션을 선택해 주세요'}
+          [필수] {selectedSize !== null ? selectedSize : "옵션을 선택해 주세요"}
         </span>
       </div>
     </div>
   );
 };
-const ProductColorBox = ({ product, currentProduct }) => {
+const ProductColorBox = ({
+  product,
+  currentProduct,
+  radioRef,
+  selectedOption,
+  setSelectedOption,
+}) => {
   const [selectedColor, setSelectedColor] = useState(null);
 
   return (
@@ -284,10 +480,63 @@ const ProductColorBox = ({ product, currentProduct }) => {
                 return (
                   <React.Fragment key={i}>
                     <input
-                      onChange={(e) => {
-                        setSelectedColor(a);
+                      ref={(el) => {
+                        if (product === "currentProduct") {
+                          radioRef.current.color[i] = el;
+                        }
                       }}
-                      type="checkbox"
+                      onChange={(e) => {
+                        if (product === "currentProduct") {
+                          let copy = [...selectedOption];
+
+                          if (radioRef.current.size.length === 0) {
+                            let findIndex = copy.findIndex((b) => {
+                              return b.color === a;
+                            });
+
+                            if (findIndex === -1) {
+                              copy.push({
+                                color: a,
+                                count: 1,
+                                id: currentProduct.productId,
+                              });
+                            } else {
+                              copy[findIndex].count += 1;
+                            }
+                          } else {
+                            let find = radioRef.current.size.find((b) => {
+                              return b.checked === true;
+                            });
+
+                            if (find !== undefined) {
+                              let findIndex = copy.findIndex((b) => {
+                                return b.color === a && b.size === find.value;
+                              });
+
+                              if (findIndex === -1) {
+                                copy.push({
+                                  color: a,
+                                  size: find.value,
+                                  count: 1,
+                                  id: currentProduct.productId,
+                                  cartId: a + find.value,
+                                });
+                              } else {
+                                copy[findIndex].count += 1;
+                              }
+                            } else {
+                              alert("사이즈를 먼저 선택해주세요");
+                              radioRef.current.color.forEach((a) => {
+                                a.checked = false;
+                              });
+                            }
+                          }
+
+                          setSelectedOption(copy);
+                          setSelectedColor(a);
+                        }
+                      }}
+                      type="radio"
                       name={`color${currentProduct.productId}`}
                       style={{ backgroundColor: a }}
                       value={a}
@@ -299,15 +548,15 @@ const ProductColorBox = ({ product, currentProduct }) => {
         </div>
 
         <span>
-          [필수]{' '}
-          {selectedColor !== null ? selectedColor : '옵션을 선택해 주세요'}
+          [필수]{" "}
+          {selectedColor !== null ? selectedColor : "옵션을 선택해 주세요"}
         </span>
       </div>
     </div>
   );
 };
 
-const AdditionalProducts = ({ currentProduct, get }) => {
+const AdditionalProducts = ({ currentProduct, get, radioRef }) => {
   const [additionalProducts, setAdditionalProducts] = useState([]);
 
   const [isShow, setIsShow] = useState(false);
@@ -343,9 +592,9 @@ const AdditionalProducts = ({ currentProduct, get }) => {
       <div
         className="additional-products-list"
         style={{
-          maxHeight: isShow ? '1000px' : '0',
-          overflow: 'hidden',
-          transition: 'max-height .3s',
+          maxHeight: isShow ? "1000px" : "0",
+          overflow: "hidden",
+          transition: "max-height .3s",
         }}
       >
         <ul>
@@ -360,10 +609,16 @@ const AdditionalProducts = ({ currentProduct, get }) => {
                       <span>{a.name}</span>
                       <span>{a.originalPrice.toLocaleString()}원</span>
                       {a !== null && a.size.length > 0 ? (
-                        <ProductSizeBox currentProduct={a}></ProductSizeBox>
+                        <ProductSizeBox
+                          radioRef={radioRef}
+                          currentProduct={a}
+                        ></ProductSizeBox>
                       ) : null}
                       {a !== null && a.color.length > 0 ? (
-                        <ProductColorBox currentProduct={a}></ProductColorBox>
+                        <ProductColorBox
+                          radioRef={radioRef}
+                          currentProduct={a}
+                        ></ProductColorBox>
                       ) : null}
                     </div>
                   </li>

@@ -204,6 +204,21 @@
   white-space: nowrap;
 }
 
+.header-icons .cart-icon>a {
+  position: relative;
+}
+
+.header-icons .cart-count {
+  position: absolute;
+  color: red;
+  top: 26%;
+  left: 32%;
+  font-size: .875rem;
+  font-weight: 500;
+}
+
+
+
 @media screen and (max-width: 1200px) {
   .header-center {
     position: static;

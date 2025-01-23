@@ -1,20 +1,20 @@
-import './ProductDetail.css';
-import ProductInfo from '../Components/ProductInfo';
-import { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router';
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { Pagination } from 'swiper/modules';
+import "./ProductDetail.css";
+import ProductInfo from "../Components/ProductInfo";
+import { useEffect, useRef, useState } from "react";
+import { useParams } from "react-router";
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
 
-const ProductDetail = () => {
+const ProductDetail = ({ cartItems, setCartItems }) => {
   const productDetailRef = useRef();
   const { id } = useParams();
   const [findReview, setFindReview] = useState(null);
 
   useEffect(() => {
-    const getReview = JSON.parse(localStorage.getItem('reviews'));
+    const getReview = JSON.parse(localStorage.getItem("reviews"));
     if (getReview !== null) {
       let filter = getReview.filter((a) => {
         return a.productId === parseInt(id);
@@ -25,13 +25,17 @@ const ProductDetail = () => {
   }, []);
   useEffect(() => {
     productDetailRef.current.parentElement.children[0].style.position =
-      'relative';
+      "relative";
   }, []);
 
   return (
     <div className="product-detail" ref={productDetailRef}>
       <div className="product-detail-inner home-inner">
-        <ProductInfo id={id}></ProductInfo>
+        <ProductInfo
+          cartItems={cartItems}
+          setCartItems={setCartItems}
+          id={id}
+        ></ProductInfo>
         <ProductDetailTap
           findReview={findReview !== null ? findReview : null}
         ></ProductDetailTap>
@@ -42,11 +46,11 @@ const ProductDetail = () => {
 
 const ProductDetailTap = ({ findReview }) => {
   const [tapMenu, setTapMenu] = useState([
-    '상품상세정보',
-    '상품구매안내',
-    '상품사용후기',
-    '상품Q&A',
-    '관련상품',
+    "상품상세정보",
+    "상품구매안내",
+    "상품사용후기",
+    "상품Q&A",
+    "관련상품",
   ]);
   const [selectedMenu, setSelectedMenu] = useState(
     tapMenu.map((a, i) => {
@@ -59,7 +63,7 @@ const ProductDetailTap = ({ findReview }) => {
   );
   const [products, setProducts] = useState(null);
   useEffect(() => {
-    let getProducts = JSON.parse(localStorage.getItem('products'));
+    let getProducts = JSON.parse(localStorage.getItem("products"));
     setProducts(getProducts);
   }, []);
 
@@ -105,7 +109,7 @@ const ProductDetailTap = ({ findReview }) => {
               </p>
               <p>
                 무통장 입금은 상품 구매 대금은 PC뱅킹, 인터넷뱅킹, 텔레뱅킹 혹은
-                가까운 은행에서 직접 입금하시면 됩니다.{' '}
+                가까운 은행에서 직접 입금하시면 됩니다.{" "}
               </p>
               <p>
                 주문시 입력한 입금자명과 실제입금자의 성명이 반드시 일치하여야
@@ -136,45 +140,45 @@ const ProductDetailTap = ({ findReview }) => {
               <h4>[ 교환 및 반품정보 ]</h4>
               <h5> 교환 및 반품 주소</h5>
               <p>-</p>
-              <h5>교환 및 반품이 가능한 경우</h5>{' '}
+              <h5>교환 및 반품이 가능한 경우</h5>{" "}
               <p>- 계약내용에 관한 서면을 받은 날부터 7일.</p>
               <p>
                 단, 그 서면을 받은 때보다 재화등의 공급이 늦게 이루어진 경우에는
                 재화등을 공급받거나 재화등의 공급이 시작된 날부터 7일 이내
               </p>
               <p>
-                {' '}
+                {" "}
                 - 공급받으신 상품 및 용역의 내용이 표시.광고 내용과 다르거나
                 계약내용과 다르게 이행된 때에는 당해 재화 등을 공급받은 날 부터
-                3월이내, 그사실을 알게 된 날 또는 알 수 있었던 날부터 30일이내{' '}
+                3월이내, 그사실을 알게 된 날 또는 알 수 있었던 날부터 30일이내{" "}
               </p>
-              <h5>교환 및 반품이 불가능한 경우</h5> -{' '}
+              <h5>교환 및 반품이 불가능한 경우</h5> -{" "}
               <p>
                 이용자에게 책임 있는 사유로 재화 등이 멸실 또는 훼손된
                 경우(다만, 재화 등의 내용을 확인하기 위하여 포장 등을 훼손한
                 경우에는 청약철회를 할 수 있습니다)
-              </p>{' '}
+              </p>{" "}
               <p>
                 - 이용자의 사용 또는 일부 소비에 의하여 재화 등의 가치가 현저히
                 감소한 경우
-              </p>{' '}
+              </p>{" "}
               <p>
                 - 시간의 경과에 의하여 재판매가 곤란할 정도로 재화등의 가치가
-                현저히 감소한 경우{' '}
+                현저히 감소한 경우{" "}
               </p>
-              <p>- 복제가 가능한 재화등의 포장을 훼손한 경우</p>{' '}
+              <p>- 복제가 가능한 재화등의 포장을 훼손한 경우</p>{" "}
               <p>
                 - 개별 주문 생산되는 재화 등 청약철회시 판매자에게 회복할 수
                 없는 피해가 예상되어 소비자의 사전 동의를 얻은 경우 - 디지털
                 콘텐츠의 제공이 개시된 경우, (다만, 가분적 용역 또는 가분적
                 디지털콘텐츠로 구성된 계약의 경우 제공이 개시되지 아니한 부분은
                 청약철회를 할 수 있습니다.)
-              </p>{' '}
+              </p>{" "}
               <p>
-                {' '}
+                {" "}
                 ※ 고객님의 마음이 바뀌어 교환, 반품을 하실 경우 상품반송 비용은
                 고객님께서 부담하셔야 합니다.
-              </p>{' '}
+              </p>{" "}
               <p>(색상 교환, 사이즈 교환 등 포함)</p>
             </li>
           </ul>
