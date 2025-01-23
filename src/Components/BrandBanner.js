@@ -1,17 +1,17 @@
-import React, { useRef, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import './BrandBanner.css';
-import { Navigation, Autoplay, Pagination } from 'swiper/modules';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "./BrandBanner.css";
+import { Navigation, Autoplay, Pagination } from "swiper/modules";
 
 const BrandBanner = () => {
   const brandBannerImage = [
-    '/img/home/brandBanner1.jpg',
-    '/img/home/brandBanner2.jpg',
-    '/img/home/brandBanner3.jpg',
+    "/img/home/brandBanner1.jpg",
+    "/img/home/brandBanner2.jpg",
+    "/img/home/brandBanner3.jpg",
   ];
   return (
     <section className="brand-banner">

@@ -1,12 +1,12 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import ProductsCard from './ProductsCard';
-import { SectionTitle } from '../StyledComponent';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import './BestItem.css';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import ProductsCard from "./ProductsCard";
+import { SectionTitle } from "../StyledComponent";
+import { useEffect, useRef, useState } from "react";
+import "./BestItem.css";
 const BestItem = ({ products }) => {
   const [isBestArr, setIsBestArr] = useState([]);
   const swiperRef = useRef(null);
@@ -32,7 +32,7 @@ const BestItem = ({ products }) => {
             }}
             className="best-swiper-button-next"
             style={{
-              display: nextButtonShow ? 'block' : 'none',
+              display: nextButtonShow ? "block" : "none",
             }}
           ></button>
           <button
@@ -41,7 +41,7 @@ const BestItem = ({ products }) => {
             }}
             className="best-swiper-button-prev"
             style={{
-              display: prevButtonShow ? 'block' : 'none',
+              display: prevButtonShow ? "block" : "none",
             }}
           ></button>
           <Swiper
@@ -74,14 +74,14 @@ const BestItem = ({ products }) => {
             onRealIndexChange={(swiper) => {
               if (
                 swiper.pagination.bullets[0].classList.contains(
-                  'swiper-pagination-bullet-active'
+                  "swiper-pagination-bullet-active"
                 )
               ) {
                 setPrevButtonShow(false);
               } else if (
                 swiper.pagination.bullets[
                   swiper.pagination.bullets.length - 1
-                ].classList.contains('swiper-pagination-bullet-active')
+                ].classList.contains("swiper-pagination-bullet-active")
               ) {
                 setNextButtonShow(false);
               } else {

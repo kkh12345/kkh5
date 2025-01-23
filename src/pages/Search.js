@@ -9,7 +9,7 @@ const Search = ({ searchValue, setSearchValue, products }) => {
   useEffect(() => {
     if (products !== null) {
       if (searchValue !== "") {
-        let filter = products.filter((product, index) => {
+        let filter = products.filter((product) => {
           return product.name.split(" ").join("").includes(searchValue);
         });
         setSearchContent(filter);

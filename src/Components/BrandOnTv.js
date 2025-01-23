@@ -1,6 +1,5 @@
-import './BrandOnTv.css';
-import { SectionTitle } from '../StyledComponent';
-import { useEffect, useState } from 'react';
+import "./BrandOnTv.css";
+import { SectionTitle } from "../StyledComponent";
 
 const BrandOnTv = () => {
   return (

@@ -1,6 +1,6 @@
 import "./Shop.css";
 import ProductsGrid from "../Components/ProductsGrid";
-import ProductsCard from "../Components/ProductsCard";
+
 import { PagiTitle } from "../StyledComponent";
 import { useParams } from "react-router";
 import { useEffect, useRef, useState } from "react";
